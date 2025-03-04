@@ -10,6 +10,12 @@ export ZOPEN_CONFIGURE="skip"
 export ZOPEN_CHECK_OPTS="test"
 export ZOPEN_INSTALL_OPTS="install INSTALL_TOP=\${ZOPEN_INSTALL_DIR}"
 export ZOPEN_COMP="CLANG"
+
+zopen_pre_patch()
+{
+  export CFLAGS="$CFLAGS $CPPFLAGS -mzos-target=zosv2r5 -D__XPLAT -D_OPEN_THREADS=2 -D__thread= -DMAP_ANON=0" 
+}
+
 zopen_check_results()
 {
   dir="$1"
