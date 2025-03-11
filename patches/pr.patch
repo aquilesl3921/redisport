@@ -11,6 +11,19 @@ index 209a13244..33c9ec9a8 100644
  
  # == END OF USER SETTINGS. NO NEED TO CHANGE ANYTHING BELOW THIS LINE =========
  
+diff --git a/deps/lua/src/Makefile b/deps/lua/src/Makefile
+index f3bba2f81..5f70a1a6c 100644
+--- a/deps/lua/src/Makefile
++++ b/deps/lua/src/Makefile
+@@ -10,7 +10,7 @@ PLAT= none
+ CC?= gcc
+ CFLAGS= -O2 -Wall $(MYCFLAGS)
+ AR= ar rcu
+-RANLIB= ranlib
++RANLIB= echo
+ RM= rm -f
+ LIBS= -lm $(MYLIBS)
+ 
 diff --git a/src/Makefile b/src/Makefile
 index 0eb2cf41b..c14452490 100644
 --- a/src/Makefile

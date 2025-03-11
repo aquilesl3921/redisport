@@ -10,10 +10,16 @@ export ZOPEN_CONFIGURE="skip"
 export ZOPEN_CHECK_OPTS="test"
 export ZOPEN_INSTALL_OPTS="install INSTALL_TOP=\${ZOPEN_INSTALL_DIR}"
 export ZOPEN_COMP="CLANG"
+export ZOPEN_MAKE="zopen_make"
+
+zopen_make() {
+	cd deps; make "$@" fast_float  fpconv  hdr_histogram	hiredis  jemalloc  linenoise  lua; cd -
+	make "$@"
+}
 
 zopen_pre_patch()
 {
-  export CFLAGS="$CFLAGS $CPPFLAGS -mzos-target=zosv2r5 -D__XPLAT -D_OPEN_THREADS=2 -D__thread= -DMAP_ANON=0" 
+  export CFLAGS="$CFLAGS $CPPFLAGS -mzos-target=zosv2r5 -D__XPLAT -D_OPEN_THREADS=2 -D__thread= -DMAP_ANON=0 -D_UNIX03_SOURCE=1" 
 }
 
 zopen_check_results()
